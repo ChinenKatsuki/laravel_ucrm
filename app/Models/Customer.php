@@ -28,10 +28,12 @@ class Customer extends Model
         if(!empty($input))
         {
             if(Customer::where('kana', 'like', $input . '%')
-            ->orWhere('tel', 'like', $input . '%')->exists())
+            ->orWhere('tel', 'like', $input . '%')
+            ->orWhere('name', 'like', $input . '%')->exists())
             {
                 return $query->where('kana', 'like', $input . '%')
-                ->orWhere('tel', 'like', $input . '%');
+                ->orWhere('tel', 'like', $input . '%')
+                ->orWhere('name', 'like', $input . '%');
             }
         }
     }
